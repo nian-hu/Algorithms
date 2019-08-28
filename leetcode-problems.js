@@ -90,4 +90,17 @@ console.log(longestSubstring("pwwkew"))
 
 // A linked list can be reversed either iteratively or recursively.Could you implement both?
 
+function reverseList(head) {
+  let pre = null;
 
+  while (head) {
+    let next = head.next;
+    head.next = pre;
+    pre = head;
+    head = next;
+  }
+
+  return pre;
+}
+
+console.log(reverseList(1));

@@ -56,24 +56,26 @@ function longestSubstring(str) {
   for (let i = 0; i < str.length; i++) {
     let char = str[i];
 
-    if (!char in obj) {
+    if (obj[char] === undefined) {
       obj[char] = 1;
       current += char;
-      console.log(obj)
+      // console.log(current);
 
       if (current.length > longest.length) {
         longest = current;
+        // console.log(longest)
       }
-
     } else {
-      longest = current;
       current = "";
+      obj = {};
     }
   }
 
+  console.log(longest);
+  // console.log(longest.length);
   return longest.length;
 }
 
-longestSubstring("abcabcbb")
+// longestSubstring("abcabcbb")
 
-// console.log(longestSubstring("abcabcbb"))
+console.log(longestSubstring("pwwkew"))

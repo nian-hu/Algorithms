@@ -49,5 +49,31 @@ console.log(twoSum([2, 7, 11, 15], 9))
 // Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 function longestSubstring(str) {
+  let obj = {};
+  let longest = "";
+  let current = "";
 
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+
+    if (!char in obj) {
+      obj[char] = 1;
+      current += char;
+      console.log(obj)
+
+      if (current.length > longest.length) {
+        longest = current;
+      }
+
+    } else {
+      longest = current;
+      current = "";
+    }
+  }
+
+  return longest.length;
 }
+
+longestSubstring("abcabcbb")
+
+// console.log(longestSubstring("abcabcbb"))

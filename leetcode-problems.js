@@ -131,7 +131,7 @@ function permutations(array) {
     let perm = perms[i];
 
     for (let j = 0; j < perm.length; j++) {
-      let newPerm = perm.slice(0, j) + [last] + perm.slice(j);
+      let newPerm = perm.slice(0, j).concat([last]).concat(perm.slice(j));
       all_perms.push(newPerm);
     }
   }

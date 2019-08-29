@@ -158,3 +158,20 @@ console.log(permutations([1, 2, 3]))
 //   [1, 2],
 //   []
 // ]
+
+function subsets(array) {
+  if (array.length === 0) return [[]];
+
+  let last = array.pop();
+  let prevArray = subsets(array);
+  let subsets = [];
+
+  for (let i = 0; i < prevArray.length; i++) {
+    let subarray = prevArray[i];
+    subsets.push(subarray.concat([last]));
+  }
+
+  return subsets.concat(prevArray);
+}
+
+console.log(subsets([1, 2, 3]))

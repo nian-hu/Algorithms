@@ -104,3 +104,39 @@ function reverseList(head) {
 }
 
 console.log(reverseList(1));
+
+// Given a collection of distinct integers, return all possible permutations.
+
+//   Example:
+
+// Input: [1, 2, 3]
+// Output:
+// [
+//   [1, 2, 3],
+//   [1, 3, 2],
+//   [2, 1, 3],
+//   [2, 3, 1],
+//   [3, 1, 2],
+//   [3, 2, 1]
+// ]
+
+function permutations(array) {
+  if (array.length <= 1) return [array];
+
+  let last = array.pop();
+  let perms = permutations(array);
+  let all_perms = [];
+
+  for (let i = 0; i < perms.length; i++) {
+    let perm = perms[i];
+
+    for (let j = 0; j < perm.length; j++) {
+      let newPerm = perm.slice(0, j) + [last] + perm.slice(j);
+      all_perms.push(newPerm);
+    }
+  }
+
+  return all_perms
+}
+
+console.log(permutations([1, 2, 3]))

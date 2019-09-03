@@ -76,7 +76,7 @@ class LinkedList {
 
     // TODO: Implement the addToHead method here
     addToHead(val) {
-
+      
     }
 
     // TODO: Implement the removeHead method here

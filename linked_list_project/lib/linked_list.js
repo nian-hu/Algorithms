@@ -128,12 +128,27 @@ class LinkedList {
 
     // TODO: Implement the set method here
     set(index, val) {
-
+      let node = this.get(index);
+      if (node) {
+        node.value = val;
+        return true;
+      }
+      return false;
     }
 
     // TODO: Implement the insert method here
     insert(index, val) {
+      if (index < 0 || index >= this.length) return false;
+      if (index === this.length) return !!this.addToTail(val);
+      if (index === 0) return !!this.addToHead(val);
 
+      let newNode = new Node(val);
+      let prev = this.get(index - 1);
+      let next = prev.next;
+      prev.next = newNode;
+      newNode.next = next;
+      this.length++;
+      return true;
     }
 
     // TODO: Implement the remove method here

@@ -76,22 +76,54 @@ class LinkedList {
 
     // TODO: Implement the addToHead method here
     addToHead(val) {
-      
+      let newNode = new Node(val);
+      if (!this.head) {
+        this.head = newNode;
+        this.tail = newNode;
+      } else {
+        newNode.next = this.head;
+        this.head = newNode;
+      }
+
+      this.length++;
+      return this;
     }
 
     // TODO: Implement the removeHead method here
     removeHead() {
+      if (!this.head) return undefined;
+      if (this.length === 0) {
+        this.head = null;
+        this.tail = null;
+      }
 
+      let removedHead = this.head;
+      this.head = removedHead.next;
+      this.length--;
+
+      return removedHead;
     }
 
     // TODO: Implement the contains method here
     contains(target) {
-
+      let node = this.head;
+      while (node) {
+        if (node.value === target) return true;
+        node = node.next;
+      }
+      return false;
     }
 
     // TODO: Implement the get method here
     get(index) {
-
+      if (index < 0 || index >= this.length) return null;
+      let counter = 0;
+      let node = this.head;
+      while (counter !== index) {
+        node = node.next;
+        counter++;
+      }
+      return node;
     }
 
     // TODO: Implement the set method here

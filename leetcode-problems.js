@@ -159,22 +159,22 @@ console.log(permutations([1, 2, 3]))
 //   []
 // ]
 
-function subsets(array) {
-  if (array.length === 0) return [[]];
+// function subsets(array) {
+//   if (array.length === 0) return [[]];
 
-  let last = array.pop();
-  let prevArray = subsets(array);
-  let subsets = [];
+//   let last = array.pop();
+//   let prevArray = subsets(array);
+//   let subsets = [];
 
-  for (let i = 0; i < prevArray.length; i++) {
-    let subarray = prevArray[i];
-    subsets.push(subarray.concat([last]));
-  }
+//   for (let i = 0; i < prevArray.length; i++) {
+//     let subarray = prevArray[i];
+//     subsets.push(subarray.concat([last]));
+//   }
 
-  return subsets.concat(prevArray);
-}
+//   return subsets.concat(prevArray);
+// }
 
-console.log(subsets([1, 2, 3]))
+// console.log(subsets([1, 2, 3]))
 
 // Write a function to find the longest common prefix string amongst
 //  an array of strings.
@@ -190,3 +190,20 @@ console.log(subsets([1, 2, 3]))
 // Input: ["dog", "racecar", "car"]
 // Output: ""
 // Explanation: There is no common prefix among the input strings.
+
+function longestCommonPrefix(strs) {
+  for (let i = 0; i < strs[0].length; i++) {  
+    let char = strs[0][i]                       //f
+    for (let j = 0; j < strs.length; j++) {  
+      let str = strs[j];                        //flower
+      if (str[i] !== char) {                    
+        return str.slice(0, i);
+      }
+    }
+  }
+
+  return strs[0];
+}
+
+console.log(longestCommonPrefix(["flower", "flow", "flight"]))
+console.log(longestCommonPrefix(["dog", "racecar", "car"]))

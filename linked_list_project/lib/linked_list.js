@@ -92,14 +92,14 @@ class LinkedList {
     // TODO: Implement the removeHead method here
     removeHead() {
       if (!this.head) return undefined;
-      if (this.length === 0) {
-        this.head = null;
-        this.tail = null;
-      }
 
       let removedHead = this.head;
       this.head = removedHead.next;
       this.length--;
+
+      if (this.length === 0) {
+        this.tail = null;
+      }
 
       return removedHead;
     }
@@ -167,7 +167,7 @@ class LinkedList {
 
     // TODO: Implement the size method here
     size() {
-
+      return this.length;
     }
 }
 

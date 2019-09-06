@@ -8,28 +8,77 @@
 // anagrams('potato', 'listen') => false
 
 function anagrams(str1, str2) {
-    let obj = {};
+  let obj = {};
 
-    for (let i = 0; i < str1.length; i++) {
-        let char = str1[i];
-        if (!obj[char]) {
-            obj[char] = 0;
-        }
-        obj[char] += 1;
+  for (let i = 0; i < str1.length; i++) {
+    let char = str1[i];
+    if (!obj[char]) {
+      obj[char] = 0;
     }
+    obj[char] += 1;
+  }
 
-    for (let i = 0; i < str2.length; i++) {
-        let char = str2[i];
-        if (!obj[char]) {
-            obj[char] = 0;
-        }
-        obj[char] -= 1;
+  for (let i = 0; i < str2.length; i++) {
+    let char = str2[i];
+    if (!obj[char]) {
+      obj[char] = 0;
     }
+    obj[char] -= 1;
+  }
 
-    return Object.values(obj).every(number => number === 0);
+  return Object.values(obj).every(num => num === 0)
 }
 
-anagrams('listen', 'silent')
+console.log(anagrams('listen', 'silent'))
+console.log(anagrams('potato', 'listen'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function anagrams(str1, str2) {
+//     let obj = {};
+
+//     for (let i = 0; i < str1.length; i++) {
+//         let char = str1[i];
+//         if (!obj[char]) {
+//             obj[char] = 0;
+//         }
+//         obj[char] += 1;
+//     }
+
+//     for (let i = 0; i < str2.length; i++) {
+//         let char = str2[i];
+//         if (!obj[char]) {
+//             obj[char] = 0;
+//         }
+//         obj[char] -= 1;
+//     }
+
+//     return Object.values(obj).every(number => number === 0);
+// }
+
+// anagrams('listen', 'silent')
 
 // Write an `Array.prototype.mergeSort` method that merge sorts an array. It
 // should take an optional callback that compares two elements, returning -1 if 

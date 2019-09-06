@@ -297,17 +297,48 @@ function jumbleSort(string, alphabet) {
 //
 // primeFactorization(12) => [2,2,3]
 
-function primeFactorization(num) {
-    for (let i = 2; i < num; i++) {
-        let fact = i;
-        if (num % fact === 0) {
-            let otherFact = (num / fact);
-            return primeFactorization(fact).concat(primeFactorization(otherFact))
-        }
-    }
+// 12
+// 2, 6
+// 2, 2, 3
 
-    return [num]
+function primeFactorization(num) {   // 12   6
+  for (let i = 2; i < num; i++) {    // i = 2
+    let fact = i;                    // fact = 2    3
+    if (num % i === 0) {
+      let otherFact = (num / fact);       // otherFact = 6     2
+      return primeFactorization(fact).concat(primeFactorization(otherFact))
+    }
+  }
+
+  return [num]   // [2]    [2, 3]
 }
+
+console.log(primeFactorization(12))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function primeFactorization(num) {
+//     for (let i = 2; i < num; i++) {
+//         let fact = i;
+//         if (num % fact === 0) {
+//             let otherFact = (num / fact);
+//             return primeFactorization(fact).concat(primeFactorization(otherFact))
+//         }
+//     }
+
+//     return [num]
+// }
 
 // Write a recursive function `stringIncludeKey(string, key)` that takes in 
 // a string to search and a key string. Return true if the string contains all 

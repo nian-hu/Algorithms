@@ -262,9 +262,45 @@ function rotateMatrix2(matrix) {
 // its entire row and column are set to zero
 
 function setZeroes(matrix) {
-  let length = matrix.length;
-  let row
+  let row = null;
+  let col = null;
+
+  // Store the row and column index with value 0
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (matrix[i][j] === 0) {
+        row = i;
+        col = j;
+        console.log(row)   // 0
+        console.log(col)   // 2
+      }
+    }
+  }  
+
+  // Set entire row to zero 
+
+  for (let i = 0; i < matrix.length; i++) {
+    // let row = matrix[i];
+    for (let j = 0; j < matrix[0].length; j++) {
+      // let col = matrix[j];
+      console.log(row)
+      console.log(col)
+      
+      matrix[row][j] = 0; 
+      matrix[i][col] = 0;
+
+      // if (col) {
+      //   matrix[i][col] = 0;
+      // }
+    }
+  }
+
+  // Set entire column to zero
+  return matrix;
 }
+
+console.log(setZeroes([[1, 2, 0, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]))
+
 
 // check if one word is a rotation of another
 // but only by one
@@ -282,5 +318,5 @@ function rotateString(str1, str2) {
   return false;
 }
 
-console.log(rotateString('waterbottle', 'erbottlewat')) // true
-console.log(rotateString('waterbottle', 'erbottlewaz')) // false
+// console.log(rotateString('waterbottle', 'erbottlewat')) // true
+// console.log(rotateString('waterbottle', 'erbottlewaz')) // false

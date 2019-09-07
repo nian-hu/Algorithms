@@ -136,12 +136,18 @@ function oneAway(str1, str2) {
   let changes = 0;
   let obj = {};
 
+  // Keep track of all the characters in the first string
   for (let i = 0; i < str1.length; i++) {
     let char = str1[i];
     if (!obj[char]) {
       obj[char] = 1;
     }
   }
+
+  // Check if second string has the same characters as the object
+  // by comparing the first character of the second string continuously.
+  // If it's not the same, then we know we'd have to make a change there.
+  // We slice the string and then continue comparing.
 
   while (str2.length) {
     if (!obj[str2[0]]) {
@@ -157,3 +163,26 @@ console.log(oneAway('pale', 'ple'))  // true
 console.log(oneAway('pales', 'pale')) // true 
 console.log(oneAway('pale', 'bale')) // true 
 console.log(oneAway('pale', 'bake')) // false 
+
+// Perform basic string compression
+
+function compressString(str) {
+  let compressed = "";
+  let count = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    let nextChar = str[i + 1];
+    count++;
+
+    if (nextChar !== char || i === str.length - 1) {
+      compressed += char + count;
+      count = 0;
+    }
+  }
+
+  // return compressed;
+  return compressed.length < str.length ? compressed : str;
+}
+
+console.log(compressString('aabcccccaaa')) // a2b1c5a3

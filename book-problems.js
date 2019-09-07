@@ -121,6 +121,18 @@ function palindromePerm(str) {
 }
 
 
-console.log(palindromePerm('tact coa'))  // true ('taco cat')
-console.log(palindromePerm('tactcoapapa')) // true 
-console.log(palindromePerm('helloheloo')) // false 
+// console.log(palindromePerm('tact coa'))  // true ('taco cat')
+// console.log(palindromePerm('tactcoapapa')) // true 
+// console.log(palindromePerm('helloheloo')) // false 
+
+// Given two strings, check if they are one edit or zero edits away
+// Edit: insertion, removal, replacement
+
+function oneAway(str1, str2) {
+  
+}
+
+console.log(oneAway('pale', 'ple'))  // true 
+console.log(oneAway('pales', 'pale')) // true 
+console.log(oneAway('pale', 'bale')) // true 
+console.log(oneAway('pale', 'bake')) // false 

@@ -129,7 +129,28 @@ function palindromePerm(str) {
 // Edit: insertion, removal, replacement
 
 function oneAway(str1, str2) {
-  
+  // If the length difference is greater than one, then
+  // we know they are 2 insertions/2 deletions away, thus false
+  if (Math.abs(str1.length - str2.length) > 1) return false;
+
+  let changes = 0;
+  let obj = {};
+
+  for (let i = 0; i < str1.length; i++) {
+    let char = str1[i];
+    if (!obj[char]) {
+      obj[char] = 1;
+    }
+  }
+
+  while (str2.length) {
+    if (!obj[str2[0]]) {
+      changes += 1;
+    }
+    str2 = str2.slice(1);
+  }
+
+  return changes > 1 ? false : true 
 }
 
 console.log(oneAway('pale', 'ple'))  // true 

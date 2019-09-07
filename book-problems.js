@@ -75,6 +75,12 @@ function checkPerms(str1, str2) {
   return Object.values(obj).every(num => num === 0)
  }
 
-console.log(checkPerms('dog', 'god')) // true
-console.log(checkPerms('dog', 'dod')) // false
-console.log(checkPerms('dog', 'dogd')) // false
+// console.log(checkPerms('dog', 'god')) // true
+// console.log(checkPerms('dog', 'dod')) // false
+// console.log(checkPerms('dog', 'dogd')) // false
+
+// Replace all spaces in a string with '%20'
+
+
+
+console.log(urlify('Mr John Smith')) // Mr%20John%20Smith

@@ -1,11 +1,26 @@
 // Determine if a string has all unique characters
 
-function isUnique(str) {
-  for (let i = 0; i < str.length; i++) {
-    let first = str[0];
-    let rest = str.slice(1);
+// function isUnique(str) {
+//   for (let i = 0; i < str.length; i++) {
+//     let first = str[0];
+//     let rest = str.slice(1);
 
-    if (rest.includes(first)) return false;
+//     if (rest.includes(first)) return false;
+//   }
+
+//   return true;
+// }
+
+function isUnique(str) {
+  let obj = {};
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (!obj[char]) {
+      obj[char] = 1;
+    } else {
+      return false;
+    }
   }
 
   return true;
@@ -36,6 +51,6 @@ function checkPerms(str1, str2) {
   return true;
 }
 
-console.log(checkPerms('dog', 'god')) // true
-console.log(checkPerms('dog', 'dod')) // false
-console.log(checkPerms('dog', 'dogd')) // false
+// console.log(checkPerms('dog', 'god')) // true
+// console.log(checkPerms('dog', 'dod')) // false
+// console.log(checkPerms('dog', 'dogd')) // false

@@ -91,19 +91,28 @@ console.log(longestSubstring("pwwkew"))
 // A linked list can be reversed either iteratively or recursively.Could you implement both?
 
 function reverseList(head) {
-  let pre = null;
-
+  let prev = null;
   while (head) {
     let next = head.next;
-    head.next = pre;
-    pre = head;
+    head.next = prev;
+    prev = head;
     head = next;
   }
-
-  return pre;
+  return prev;
 }
 
 console.log(reverseList(1));
+
+function reverseList(head) {
+  if (!head || !head.next) {
+    return head;
+  }
+
+  let newHead = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return newHead;
+}
 
 // Given a collection of distinct integers, return all possible permutations.
 

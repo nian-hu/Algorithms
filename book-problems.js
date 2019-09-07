@@ -85,4 +85,13 @@ function urlify(str) {
   return str.split(" ").join("%20");
 }
 
-console.log(urlify('Mr John Smith')) // Mr%20John%20Smith
+// console.log(urlify('Mr John Smith')) // Mr%20John%20Smith
+
+// Given a string, check if it's a permutation of a palindrome
+
+function palindromePerm(str) {
+  
+}
+
+
+console.log(palindromePerm('tact coa'))  // true ('taco cat')

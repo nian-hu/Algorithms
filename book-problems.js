@@ -81,6 +81,8 @@ function checkPerms(str1, str2) {
 
 // Replace all spaces in a string with '%20'
 
-
+function urlify(str) {
+  return str.split(" ").join("%20");
+}
 
 console.log(urlify('Mr John Smith')) // Mr%20John%20Smith

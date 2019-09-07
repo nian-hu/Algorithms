@@ -26,31 +26,55 @@ function isUnique(str) {
   return true;
 }
 
-console.log(isUnique('abcdef')) // true
-console.log(isUnique('abcdefa'))// false
-console.log(isUnique('aaaa'))   // false 
+// console.log(isUnique('abcdef')) // true
+// console.log(isUnique('abcdefa'))// false
+// console.log(isUnique('aaaa'))   // false 
 
 // Decide if one string is a permutation of another
 
+// function checkPerms(str1, str2) {
+//   if (str1.length !== str2.length) return false;
+
+//   let set = new Set();
+//   for (let i = 0; i < str1.length; i++) {
+//     set.add(str2[i]);
+//   }
+
+//   while (str1.length > 0) {
+//     if (set.has(str1[0])) {
+//       str1 = str1.slice(1);
+//     } else {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
 function checkPerms(str1, str2) {
-  if (str1.length !== str2.length) return false;
+  let obj = {};
 
-  let set = new Set();
   for (let i = 0; i < str1.length; i++) {
-    set.add(str2[i]);
-  }
-
-  while (str1.length > 0) {
-    if (set.has(str1[0])) {
-      str1 = str1.slice(1);
+    let char = str1[i];
+    if (!obj[char]) {
+      obj[char] = 1;
     } else {
-      return false;
+      obj[char] += 1;
     }
   }
 
-  return true;
-}
+  for (let i = 0; i < str2.length; i++) {
+    let char = str2[i];
+    if (!obj[char]) {
+      obj[char] = 1;
+    } else {
+      obj[char] -= 1;
+    }
+  }
 
-// console.log(checkPerms('dog', 'god')) // true
-// console.log(checkPerms('dog', 'dod')) // false
-// console.log(checkPerms('dog', 'dogd')) // false
+  return Object.values(obj).every(num => num === 0)
+ }
+
+console.log(checkPerms('dog', 'god')) // true
+console.log(checkPerms('dog', 'dod')) // false
+console.log(checkPerms('dog', 'dogd')) // false

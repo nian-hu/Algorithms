@@ -90,8 +90,37 @@ function urlify(str) {
 // Given a string, check if it's a permutation of a palindrome
 
 function palindromePerm(str) {
-  
+  let obj = {};
+  let alpha = "abcdefghijklmnopqrstuvwxyz";
+
+  // Use object to count how many times each character appears
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (alpha.includes(char)) {
+      if (!obj[char]) {
+        obj[char] = 1;
+      } else {
+        obj[char] += 1;
+      }
+    }
+  }
+
+  // Iterate through object and ensure no more than one character
+  // has an odd count
+  // We need to have an even number of all characters, so 
+  // half can be on one side and half can be on the other side.
+  // At most ONE character (middle character) can have an odd count.
+
+  let counts = Object.values(obj);
+  let odds = 0;
+  for (let i = 0; i < counts.length; i++) {
+    if (counts[i] % 2 !== 0) odds += 1;
+  }
+
+  return odds > 1 ? false : true;
 }
 
 
 console.log(palindromePerm('tact coa'))  // true ('taco cat')
+console.log(palindromePerm('tactcoapapa')) // true 
+console.log(palindromePerm('helloheloo')) // false 

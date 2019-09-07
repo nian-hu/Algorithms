@@ -185,4 +185,49 @@ function compressString(str) {
   return compressed.length < str.length ? compressed : str;
 }
 
-console.log(compressString('aabcccccaaa')) // a2b1c5a3
+// console.log(compressString('aabcccccaaa')) // a2b1c5a3
+
+// Given an image represed by an N x N matrix, where each pixel in the image is
+// 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+
+// Input:
+// [
+//     [1, 2, 3, 4],
+//     [5, 6, 7, 8],
+//     [9, 10, 11, 12],
+//     [13, 14, 15, 16]
+// ];
+// Output:
+// [
+//     [13, 9, 5, 1],
+//     [14, 10, 6, 2],
+//     [15, 11, 7, 3]
+//     [16, 12, 8, 4]
+// ];
+
+function rotateMatrix(matrix) {
+  let rotated = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    rotated.push([]);
+  }
+
+  for (let i = 0; i < matrix.length; i++) {        // 0
+    for (let j = 0; j < matrix[i].length; j++) {   // 0, 1, 2, 3
+      console.log([i, j])
+      console.log(matrix[i][j])
+      rotated[j].unshift(matrix[i][j]);   // matrix[0][1]
+      console.log(rotated[j])
+    }
+  }
+  
+  return rotated;
+}
+
+// console.log(rotateMatrix([[1, 2, 3, 4],[5, 6, 7, 8],[9, 10, 11, 12],[13, 14, 15, 16]]))
+
+function rotateMatrix2(matrix) {
+  
+}
+
+console.log(rotateMatrix2([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]))

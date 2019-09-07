@@ -159,10 +159,10 @@ function oneAway(str1, str2) {
   return changes > 1 ? false : true 
 }
 
-console.log(oneAway('pale', 'ple'))  // true 
-console.log(oneAway('pales', 'pale')) // true 
-console.log(oneAway('pale', 'bale')) // true 
-console.log(oneAway('pale', 'bake')) // false 
+// console.log(oneAway('pale', 'ple'))  // true 
+// console.log(oneAway('pales', 'pale')) // true 
+// console.log(oneAway('pale', 'bale')) // true 
+// console.log(oneAway('pale', 'bake')) // false 
 
 // Perform basic string compression
 
@@ -256,4 +256,31 @@ function rotateMatrix2(matrix) {
   return matrix;
 }
 
-console.log(rotateMatrix2([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]))
+// console.log(rotateMatrix2([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]))
+
+// if an element in M x N matrix is zero
+// its entire row and column are set to zero
+
+function setZeroes(matrix) {
+  let length = matrix.length;
+  let row
+}
+
+// check if one word is a rotation of another
+// but only by one
+
+function rotateString(str1, str2) {
+  if (str1.length === 0 && str2.length === 0) return true;
+  if (str1.length === 0 || str2.length === 0) return false;
+
+  for (let i = 0; i < str1.length; i++) {
+    if (str1 === str2) return true;
+    let firstChar = str1[0];
+    str1 = str1.slice(1) + firstChar;
+  }
+
+  return false;
+}
+
+console.log(rotateString('waterbottle', 'erbottlewat')) // true
+console.log(rotateString('waterbottle', 'erbottlewaz')) // false

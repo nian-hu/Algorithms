@@ -289,11 +289,12 @@ function removeNthNode(head, n) {
 // has the largest sum and return its sum.
 
 function maxSubarray(nums) {
-  let current = 0;
-  let largest = 0;
+  let current = nums[0];
+  let largest = nums[0];
+  // console.log(`largest: ${largest}`);
 
   for (let i = 0; i < nums.length; i++) {
-    for (let j = i; j <= nums.length; j++) {
+    for (let j = i + 1; j <= nums.length; j++) {
       let subArr = nums.slice(i, j);
       // console.log(subArr);
       current = subArr.reduce((a, b) => a + b, 0)
@@ -301,12 +302,13 @@ function maxSubarray(nums) {
       if (current > largest) {
         largest = current;
       }
-      current = 0;
+      current = nums[0];
     }
   }
 
   return largest;
 }
 
-console.log(maxSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])) // 6
-console.log(maxSubarray([1])) // 1
+// console.log(maxSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])) // 6
+// console.log(maxSubarray([1])) // 1
+console.log(maxSubarray([-1])) // -1

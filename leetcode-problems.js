@@ -293,7 +293,7 @@ function maxSubarray(nums) {
   let largest = 0;
 
   for (let i = 0; i < nums.length; i++) {
-    for (let j = i; j < nums.length; j++) {
+    for (let j = i; j <= nums.length; j++) {
       let subArr = nums.slice(i, j);
       // console.log(subArr);
       current = subArr.reduce((a, b) => a + b, 0)
@@ -308,4 +308,5 @@ function maxSubarray(nums) {
   return largest;
 }
 
-// console.log(maxSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+console.log(maxSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])) // 6
+console.log(maxSubarray([1])) // 1

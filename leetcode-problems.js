@@ -27,7 +27,7 @@ function twoSum(arr, target) {
   return null;
 }
 
-console.log(twoSum([2, 7, 11, 15], 9))
+// console.log(twoSum([2, 7, 11, 15], 9))
 
 // Given a string, find the length of the longest substring without repeating characters.
 
@@ -71,14 +71,14 @@ function longestSubstring(str) {
     }
   }
 
-  console.log(longest);
+  // console.log(longest);
   // console.log(longest.length);
   return longest.length;
 }
 
 // longestSubstring("abcabcbb")
 
-console.log(longestSubstring("pwwkew"))
+// console.log(longestSubstring("pwwkew"))
 
 // Reverse a singly linked list.
 
@@ -101,7 +101,7 @@ function reverseList(head) {
   return prev;
 }
 
-console.log(reverseList(1));
+// console.log(reverseList(1));
 
 function reverseList(head) {
   if (!head || !head.next) {
@@ -148,7 +148,7 @@ function permutations(array) {
   return all_perms
 }
 
-console.log(permutations([1, 2, 3]))
+// console.log(permutations([1, 2, 3]))
 
 // Returns all subsets of an array
 // do this recursively
@@ -214,8 +214,8 @@ function longestCommonPrefix(strs) {
   return strs[0];
 }
 
-console.log(longestCommonPrefix(["flower", "flow", "flight"]))
-console.log(longestCommonPrefix(["dog", "racecar", "car"]))
+// console.log(longestCommonPrefix(["flower", "flow", "flight"]))
+// console.log(longestCommonPrefix(["dog", "racecar", "car"]))
 
 // Reverse a singly linked list.
 
@@ -240,4 +240,46 @@ function reverseList(head) {
   return prev;
 }
 
-console.log(reverseList(1))
+// console.log(reverseList(1))
+
+// Remove nth node from end of list
+// Given a linked list, remove the nth node from end
+// return its head
+
+function removeNthNode(head, n) {
+  let nodeToReturn = head;
+
+  // Have two pointers, one that is n ahead of the other
+
+  let pointer1 = head;
+  let pointer2 = head;
+
+  // Move pointer2 to be n ahead
+
+  for (let i = 0; i < n; i++) {
+    pointer2 = pointer2.next;
+  }
+
+  // If pointer2 doesn't exist, that means we must remove 
+  // the head of the list
+   
+  if (!pointer2) {
+    return nodeToReturn.next;
+  }
+
+  // Move both pointers until pointer2 reaches the end
+  // At this point, we know pointer1 is at the right node
+
+  while (pointer2.next) {
+    pointer1 = pointer1.next;
+    pointer2 = pointer2.next;
+  }
+
+  // Save the node two places ahead of pointer1 
+  // Effectively delete the node ahead of pointer1
+  // by reassigning the next pointer to the NEXT next one
+
+  pointer1.next = pointer1.next.next;
+
+  return nodeToReturn;
+}

@@ -283,3 +283,29 @@ function removeNthNode(head, n) {
 
   return nodeToReturn;
 }
+
+// Given an integer array nums, find the contiguous 
+// subarray(containing at least one number) which 
+// has the largest sum and return its sum.
+
+function maxSubarray(nums) {
+  let current = 0;
+  let largest = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i; j < nums.length; j++) {
+      let subArr = nums.slice(i, j);
+      // console.log(subArr);
+      current = subArr.reduce((a, b) => a + b, 0)
+      // console.log(current);
+      if (current > largest) {
+        largest = current;
+      }
+      current = 0;
+    }
+  }
+
+  return largest;
+}
+
+// console.log(maxSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))

@@ -229,12 +229,14 @@ function longestCommonPrefix(strs) {
 
 function reverseList(head) {
   let prev = null;
+  let next = null;
+  let curr = head;
 
-  while (head) {
-    let next = head.next;
-    head.next = prev;
-    prev = head;
-    head = next;
+  while (curr) {
+    next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
   }
 
   return prev;

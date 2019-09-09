@@ -288,27 +288,44 @@ function removeNthNode(head, n) {
 // subarray(containing at least one number) which 
 // has the largest sum and return its sum.
 
+// function maxSubarray(nums) {
+//   let current = nums[0];
+//   let largest = nums[0];
+//   // console.log(`largest: ${largest}`);
+
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j <= nums.length; j++) {
+//       let subArr = nums.slice(i, j);
+//       // console.log(subArr);
+//       current = subArr.reduce((a, b) => a + b, 0)
+//       // console.log(current);
+//       if (current > largest) {
+//         largest = current;
+//       }
+//       current = nums[0];
+//     }
+//   }
+
+//   return largest;
+// }
+
 function maxSubarray(nums) {
   let current = nums[0];
   let largest = nums[0];
-  // console.log(`largest: ${largest}`);
 
-  for (let i = 0; i < nums.length; i++) {
-    for (let j = i + 1; j <= nums.length; j++) {
-      let subArr = nums.slice(i, j);
-      // console.log(subArr);
-      current = subArr.reduce((a, b) => a + b, 0)
-      // console.log(current);
-      if (current > largest) {
-        largest = current;
-      }
-      current = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    if (current < 0) {
+      current = nums[i];
+    } else {
+      current += nums[i];
     }
+
+    largest = Math.max(largest, current)
   }
 
   return largest;
 }
 
-// console.log(maxSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])) // 6
-// console.log(maxSubarray([1])) // 1
+console.log(maxSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])) // 6
+console.log(maxSubarray([1])) // 1
 console.log(maxSubarray([-1])) // -1

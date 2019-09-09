@@ -40,8 +40,40 @@
 // Let's code!
 // -----------
 function linkedListIntersection(list1, list2) {
-  // TODO: Implement the hasCycle function!
+  // Calculate the length of both lists
 
+  const length1 = getLength(list1.head);  // 5
+  const length2 = getLength(list2.head);  // 3
+
+  // Find the difference (diff)
+
+  let diff = Math.abs(length2 - length1)  // 2
+
+  // Move the longer list ahead by diff 
+
+  let long = length1 >= length2 ? list1.head : list2.head;
+  let short = length1 <= length2 ? list1.head : list2.head;
+
+  while (diff) {
+    long = long.next;
+    diff--;
+  }
+
+  // Step along both lists at same pace until 
+  // we find the spot where head1 = head2
+
+  while (long && short) {
+    if (long === short) return long;
+    long = long.next;
+    short = short.next;
+  }
+
+  return null;
+}
+
+function getLength(node) {
+  if (node.next === null) return 1;
+  return getLength(node.next) + 1;
 }
 
 // ----------------------------------------

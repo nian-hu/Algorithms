@@ -1,4 +1,4 @@
-const { Node, LinkedList } = require('../lib/linked_list.js');
+const { Node, LinkedList } = require('../lib/linked_list.js.js');
 const { expect } = require('chai');
 
 describe('LinkedList', () => {

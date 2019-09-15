@@ -1,4 +1,4 @@
-const { Node, Queue } = require('../lib/queue.js');
+const { Node, Queue } = require('../lib/queue.js.js');
 const { expect } = require('chai');
 
 describe('Queue', () => {

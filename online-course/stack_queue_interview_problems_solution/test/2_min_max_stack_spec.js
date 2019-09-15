@@ -1,4 +1,4 @@
-const { Node, MinMaxStack } = require('../lib/2_min_max_stack.js');
+const { Node, MinMaxStack } = require('../lib/2_min_max_stack.js.js');
 const { expect } = require('chai');
 
 

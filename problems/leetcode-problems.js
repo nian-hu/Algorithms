@@ -331,3 +331,36 @@ function maxSubarray(nums) {
 console.log(maxSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])) // 6
 console.log(maxSubarray([1])) // 1
 console.log(maxSubarray([-1])) // -1
+
+// Given inorder and postorder traversal of a tree, 
+// construct the binary tree
+
+// For example, given
+
+// inorder = [9, 3, 15, 20, 7]
+// postorder = [9, 15, 7, 20, 3]
+// Return the following binary tree:
+
+//    3
+//   / \
+// 9    20
+//      /  \
+//     15   7
+
+var buildTree = function (inorder, postorder) {
+  if (!inorder.length && !postorder.length) return null;
+
+  let root = new TreeNode(postorder[postorder.length - 1]);
+  let rootIdx = inorder.indexOf(postorder[postorder.length - 1]);
+
+  let leftInorder = inorder.slice(0, rootIdx);
+  let rightInorder = inorder.slice(rootIdx + 1);
+
+  let leftPostorder = postorder.filter(val => leftInorder.includes(val));
+  let rightPostorder = postorder.filter(val => rightInorder.includes(val));
+
+  root.left = buildTree(leftInorder, leftPostorder);
+  root.right = buildTree(rightInorder, rightPostorder);
+
+  return root;
+};
